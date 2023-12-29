@@ -25,3 +25,8 @@ resource "aws_iam_role" "github-actions" {
     ]
   })
 }
+
+output "cicd-role" {
+  description = "Role assumed by CICD Jobs"
+  value       = aws_iam_role.github-actions.arn
+}
