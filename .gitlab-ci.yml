@@ -7,7 +7,9 @@ variables:
   AWS_ROLE_ARN: arn:aws:iam::783153433147:role/gitlab
 
 default:
-  image: amazon/aws-cli
+  image:
+    name: amazon/aws-cli
+    entrypoint: ["/bin/bash"]
   id_tokens:
     AWS_OIDC_TOKEN:
       aud: https://sts.amazonaws.com
