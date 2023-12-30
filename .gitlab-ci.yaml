@@ -1,0 +1,19 @@
+variables:
+# Setup AWS Role access
+  # Gitlab provides us with OIDC tokens in environment variables, but not files
+  # We've made up a file to echo it to.
+  AWS_WEB_IDENTITY_TOKEN_FILE: /var/tmp/aws_token
+  # Deployment jobs running only on master should use role/service/gitlab-ci-master
+  AWS_ROLE_ARN: arn:aws:iam::
+
+default:
+  image: amazon/aws-cli
+  id_tokens:
+    AWS_OIDC_TOKEN:
+      aud: https://sts.amazonaws.com
+  before_script:
+    - echo "${AWS_OIDC_TOKEN}" > $AWS_WEB_IDENTITY_TOKEN_FILE
+
+test_access:
+  script:
+    - aws sts get-caller-identity
