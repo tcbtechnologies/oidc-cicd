@@ -4,7 +4,7 @@ variables:
   # We've made up a file to echo it to.
   AWS_WEB_IDENTITY_TOKEN_FILE: /var/tmp/aws_token
   # Deployment jobs running only on master should use role/service/gitlab-ci-master
-  AWS_ROLE_ARN: arn:aws:iam::
+  AWS_ROLE_ARN: arn:aws:iam::783153433147:role/gitlab
 
 default:
   image: amazon/aws-cli
