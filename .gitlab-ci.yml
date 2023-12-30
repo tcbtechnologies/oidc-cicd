@@ -12,7 +12,7 @@ default:
     entrypoint: [""]
   id_tokens:
     AWS_OIDC_TOKEN:
-      aud: https://sts.amazonaws.com
+      aud: sts.amazonaws.com
   before_script:
     - echo "${AWS_OIDC_TOKEN}" > $AWS_WEB_IDENTITY_TOKEN_FILE
 
