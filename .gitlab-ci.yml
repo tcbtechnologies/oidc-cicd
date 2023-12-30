@@ -9,6 +9,7 @@ variables:
 default:
   image:
     name: amazon/aws-cli
+    entrypoint: [""]
   id_tokens:
     AWS_OIDC_TOKEN:
       aud: https://sts.amazonaws.com
@@ -17,4 +18,4 @@ default:
 
 test_access:
   script:
-    - sts get-caller-identity
+    - aws sts get-caller-identity
