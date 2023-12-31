@@ -31,4 +31,4 @@ test_gcp:
     name: google/cloud-sdk
   script:
     - echo "${GCP_OIDC_TOKEN}" > $GCP_TOKEN_FILE
-    - test_gcp_account.sh
+    - ./test_gcp_account.sh
