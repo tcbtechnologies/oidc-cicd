@@ -10,7 +10,7 @@ defaults:
     shell: bash
 
 jobs:
-  deploy:
+  deploy-aws:
     name: Test AWS Credentials
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub's OIDC Token endpoint.
@@ -25,6 +25,26 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::783153433147:role/github-actions
         aws-region: us-east-1
-    - name: Copy files to the test website with the AWS CLI
+    - name: Check our identity
       run: |
         aws sts get-caller-identity
+
+  deploy-gcp:
+    name: Test GCP Credentails
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    -
+      id: "auth"
+      # Get the GKE credentials so we can deploy to the cluster
+      name: 'Gcloud Auth'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: 'projects/948494648501/locations/global/workloadIdentityPools/deployment/providers/github-actions'
+        service_account: 'github-ci-deployments@tcb-ci-test.iam.gserviceaccount.com'
+        token_format: 'access_token'
+        id_token_include_email: true
