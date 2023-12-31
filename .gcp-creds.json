@@ -1,5 +1,5 @@
 {
-  "audience": "//iam.googleapis.com/projects/tcb-ci-test/locations/global/workloadIdentityPools/gitlab/providers/gitlab",
+  "audience": "//iam.googleapis.com/projects/948494648501/locations/global/workloadIdentityPools/gitlab/providers/gitlab",
   "credential_source": {
     "file": "/var/tmp/gcp_token",
     "format": { "type": "text" }
