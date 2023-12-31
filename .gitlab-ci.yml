@@ -21,7 +21,7 @@ test_aws:
     - aws sts get-caller-identity
 
 test_gcp:
-  env:
+  variables:
     GCP_TOKEN_FILE: /var/tmp/gcp_token
     GOOGLE_APPLICATION_CREDENTIALS: .gcp-creds.json
   id_tokens:
