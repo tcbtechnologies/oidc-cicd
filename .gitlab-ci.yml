@@ -26,7 +26,8 @@ test_gcp:
     GOOGLE_APPLICATION_CREDENTIALS: .gcp-creds.json
   id_tokens:
     GCP_OIDC_TOKEN:
-      aud: //iam.googleapis.com/projects/tcb-ci-test/locations/global/workloadIdentityPools/gitlab/providers/gitlab
+      # Has to be the project number, not ID
+      aud: //iam.googleapis.com/projects/948494648501/locations/global/workloadIdentityPools/gitlab/providers/gitlab
   image:
     name: google/cloud-sdk
   script:

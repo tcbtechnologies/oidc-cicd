@@ -32,6 +32,6 @@ resource "google_iam_workload_identity_pool_provider" "gitlab" {
 }
 
 output "audience" {
-  value = "//iam.googleapis.com/${google_iam_workload_identity_pool_provider.gitlab.id}"
+  value = "//iam.googleapis.com/${google_iam_workload_identity_pool_provider.gitlab.name}"
 }
 
