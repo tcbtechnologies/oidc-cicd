@@ -16,9 +16,12 @@ resource "google_iam_workload_identity_pool_provider" "gitlab" {
   display_name                       = "Gitlab CI"
 
   attribute_mapping = {
-    "google.subject"       = "assertion.sub"
-    "attribute.actor"      = "assertion.actor"
-    "attribute.repository" = "assertion.repository"
+    "google.subject" = "assertion.sub"
+    # We duplicate attribute_mappings here to match Github's format
+    "attribute.user_login"   = "assertion.user_login"
+    "attribute.actor"        = "assertion.user_login"
+    "attribute.repository"   = "assertion.project_path"
+    "attribute.project_path" = "assertion.project_path"
   }
   oidc {
     issuer_uri = "https://gitlab.com"
