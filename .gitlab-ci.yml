@@ -31,4 +31,4 @@ test_gcp:
     name: google/cloud-sdk
   script:
     - echo "${GCP_OIDC_TOKEN}" > $GCP_TOKEN_FILE
-    - curl -H "Content-Type: application/x-www-form-urlencoded" -d "access_token=$(gcloud auth application-default print-access-token)" https://www.googleapis.com/oauth2/v1/tokeninfo
+    - test_gcp_account.sh
