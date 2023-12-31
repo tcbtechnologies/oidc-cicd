@@ -1,0 +1,11 @@
+{
+  "audience": "//iam.googleapis.com/projects/tcb-ci-test/locations/global/workloadIdentityPools/gitlab/providers/gitlab",
+  "credential_source": {
+    "file": "/var/tmp/gcp_token",
+    "format": { "type": "text" }
+  },
+  "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/gitlab-ci-deployments@tcb-ci-test.iam.gserviceaccount.com:generateAccessToken",
+  "subject_token_type": "urn:ietf:params:oauth:token-type:jwt",
+  "token_url": "https://sts.googleapis.com/v1/token",
+  "type": "external_account"
+}

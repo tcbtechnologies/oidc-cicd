@@ -21,8 +21,14 @@ test_aws:
     - aws sts get-caller-identity
 
 test_gcp:
+  env:
+    GCP_TOKEN_FILE: /var/tmp/gcp_token
+    GOOGLE_APPLICATION_CREDENTIALS: .gcp-creds.json
+  id_tokens:
+    GCP_OIDC_TOKEN:
+      aud: //iam.googleapis.com/projects/tcb-ci-test/locations/global/workloadIdentityPools/gitlab/providers/gitlab
   image:
     name: google/cloud-sdk
-    entrypoint: [""]
   script:
+    - echo "${GCP_OIDC_TOKEN}" > $GCP_TOKEN_FILE
     - curl -H "Content-Type: application/x-www-form-urlencoded" -d "access_token=$(gcloud auth application-default print-access-token)" https://www.googleapis.com/oauth2/v1/tokeninfo
