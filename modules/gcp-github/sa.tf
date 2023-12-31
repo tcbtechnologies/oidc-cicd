@@ -1,6 +1,11 @@
 resource "google_service_account" "deployment" {
-  account_id   = "ci-deployments"
+  account_id   = "github-ci-deployments"
   display_name = "CI Deployments"
+}
+
+locals {
+  # These are, annoyingly, case-sensitive, and Github can include uppercase characters. You can be sure you've got the correct capitalization by clicking on the repo name in the top right corner, which will bring you to the repository as Github stores it's name.
+  repos = ["tcbtechnologies/oidc-cicd"]
 }
 
 resource "google_service_account_iam_binding" "deployment" {
@@ -14,3 +19,6 @@ resource "google_service_account_iam_binding" "deployment" {
   ]
 }
 
+output "service_account" {
+  value = google_service_account.deployment.email
+}

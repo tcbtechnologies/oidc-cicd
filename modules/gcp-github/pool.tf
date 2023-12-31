@@ -1,6 +1,6 @@
 data "google_project" "project" {}
 
-rsource "google_iam_workload_identity_pool" "pool" {
+resource "google_iam_workload_identity_pool" "pool" {
   project                   = data.google_project.project.project_id
   workload_identity_pool_id = "deployment"
   display_name              = "CI/Deployment Tools"
@@ -31,3 +31,6 @@ output "identity_pool" {
   value = google_iam_workload_identity_pool.pool.name
 }
 
+output "workload_identity_provider" {
+  value = google_iam_workload_identity_pool_provider.github.name
+}
