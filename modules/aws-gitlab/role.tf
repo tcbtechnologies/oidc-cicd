@@ -18,7 +18,7 @@ resource "aws_iam_role" "gitlab" {
             "gitlab.com:aud" : "sts.amazonaws.com",
           },
           "StringLike" : {
-            "gitlab.com:sub" : "${var.gitlab_org}:${var.gitlab_repo}:*"
+            "gitlab.com:sub" : "project_path:${var.gitlab_org}/${var.gitlab_repo}:*"
           }
         }
       },

@@ -1,6 +1,6 @@
 variable "gitlab_org" {
   description = "Github Org or user the repository belongs to"
-  default     = "tcbtechnologies"
+  default     = "tcbtech"
 }
 
 variable "gitlab_repo" {
