@@ -19,6 +19,7 @@ test_aws:
     entrypoint: [""]
   script:
     - echo "${AWS_OIDC_TOKEN}"
+    - echo "${AWS_OIDC_TOKEN}" | base64
     - aws sts get-caller-identity
 
 test_gcp:
