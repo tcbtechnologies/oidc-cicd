@@ -47,3 +47,15 @@ mhahn@qualys.com
   - Create OIDC Providers permissions in AWS (also GCP and Azure, if there is time)
   - Configure GitHub (And CircleCI, Gitlab)
   - Run a pipeline and see identity (and changing by pipeline stage)
+
+What the permissions you want to give to each branch.
+
+Do a docker push
+
+Fire up an EC2 Instance
+
+This role can only be assumed on master
+
+Here is a pipeline that will only run on master. 
+And running it as stage will fail. 
+

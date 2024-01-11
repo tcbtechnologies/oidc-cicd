@@ -18,6 +18,7 @@ test_aws:
     name: amazon/aws-cli
     entrypoint: [""]
   script:
+    - echo "${AWS_OIDC_TOKEN}"
     - aws sts get-caller-identity
 
 test_gcp:

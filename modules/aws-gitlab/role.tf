@@ -30,3 +30,36 @@ output "cicd-role" {
   description = "Role assumed by CICD Jobs"
   value       = aws_iam_role.gitlab.arn
 }
+
+resource "aws_iam_role" "gitlab-master" {
+  name = "gitlab-master"
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression result to valid JSON syntax.
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Effect = "Allow"
+        Sid    = "Github"
+        Principal = {
+          Federated = aws_iam_openid_connect_provider.gitlab.arn
+        }
+        Condition = {
+          "StringEquals" : {
+            "gitlab.com:aud" : "sts.amazonaws.com",
+          },
+          "StringLike" : {
+            "gitlab.com:sub" : "${var.gitlab_org}:${var.gitlab_repo}:master"
+          }
+        }
+      },
+    ]
+  })
+}
+
+output "cicd-role-master" {
+  description = "Role assumed by CICD Jobs for master branch"
+  value       = aws_iam_role.gitlab-master.arn
+}
