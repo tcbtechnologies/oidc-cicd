@@ -14,8 +14,13 @@ style: |
   img[alt="Certificate Authorities"] { height: 470px; }
   img[alt="Limiting Trust Scope"] { height: 425px; }
   img { height: 490px; }
+  /*
+  * @theme foobar
+  * @auto-scaling true
+  */
+
 ---
-# OIDC Everywhere, or at least in CICD
+# OIDC and CICD: Why Your CI Pipeline Is Your Greatest Security Threat
 
 <!-- https://www.usenix.org/conference/srecon24americas/presentation/hahn -->
 
@@ -36,13 +41,17 @@ mhahn@qualys.com
 <!-- We are father son team that put this idea and demonstration together. -->
 
 ---
+<style scoped>
+{
+  font-size: 150%;
+}
+</style>
 # Configuring your CI correctly is vital 
 
 - Outline:
   - History of credentials
   - Why using long lived tokens is insecure
   - Examples of what can go wrong
-  - Jan 2023 Circle CI breach (and how OIDC helps)
 - How to use OIDC
   - Create the roles in your infra (AWS, Kube Clusters)
   - Setup pipelines to use OIDC
@@ -77,6 +86,11 @@ https://circleci.com/blog/jan-4-2023-incident-report/
 
 ---
 # How to use OIDC
+
+Three Simple Steps:
+-  Create Roles in your Cloud
+-  Setup pipelines to use OIDC
+-  Section off priviledges into roles attached to branches
 
 ---
 # Create the roles in your infra (AWS, Kube Clusters)
