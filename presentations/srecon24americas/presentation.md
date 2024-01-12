@@ -43,10 +43,66 @@ mhahn@qualys.com
   - Why using long lived tokens is insecure
   - Examples of what can go wrong
   - Jan 2023 Circle CI breach (and how OIDC helps)
+- How to use OIDC
+  - Create the roles in your infra (AWS, Kube Clusters)
+  - Setup pipelines to use OIDC
+  - Section off priviledges into roles attached to branches
 - Examples using OIDC:
   - Create OIDC Providers permissions in AWS (also GCP and Azure, if there is time)
   - Configure GitHub (And CircleCI, Gitlab)
   - Run a pipeline and see identity (and changing by pipeline stage)
+
+---
+# History of Credentials
+
+- Manually entered for builds that ran by hand
+- SAML / SAML-Like
+- Access tokens
+- OAuth2
+- OIDC
+
+---
+# Why long lived credentails are insecure
+
+Well, duh!
+- No rotation
+- Coarse grained access
+- Poor attribution to the user initiating an action
+
+---
+# What can go wrong
+
+Read this and update
+https://circleci.com/blog/jan-4-2023-incident-report/
+
+---
+# How to use OIDC
+
+---
+# Create the roles in your infra (AWS, Kube Clusters)
+Create roles that provide the access you need
+Setup the policys/permissions that to the least priviledges necessary
+
+---
+# Setup pipelines to use OIDC
+
+Create the OIDC token in your pipeline
+Using the pipeline syntax for your provider 
+(they just create them)
+
+---
+# Section off priviledges into roles attached to branches
+
+Setup the roles or service accounts 
+Attach them to the proper policies and permissions
+
+---
+# Example
+
+- Push docker container to ECR
+
+
+
 
 What the permissions you want to give to each branch.
 
@@ -58,4 +114,32 @@ This role can only be assumed on master
 
 Here is a pipeline that will only run on master. 
 And running it as stage will fail. 
+
+Credentials can still be leaked, but they only last an hour.
+- It's also easier to sub-divide so that testing and master workflows are separate.
+
+
+GitHub creds -> AWS creds -> Kube Credentials
+
+
+
+# whoa
+
+OIDC token is a claim
+ - Metadata
+ - Claims
+ - Signature (PKI, using a well known url for the public key)
+GitLab is the Provider
+GitLab give you a JWT with claims
+    I am git lab and here is the dets
+	The token is short lived
+
+You pass that JWT to AWS
+AWS then verifies with GitLab that the Token is valid
+And converts the claims from GitLab into something AWS understands
+That "something AWS understands" is an AWS role
+That role then links to a policy, providing the permissions (bog standard AWS stuff here)
+
+
+
 
