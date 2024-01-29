@@ -128,6 +128,22 @@ Setup the policies/permissions that to the least priviledges necessary
 
 See our example repository for the precise, working invocations.
 
+```
+    Statement = [
+      {
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Effect = "Allow"
+        Sid    = "Github"
+        Principal = {
+          Federated = aws_iam_openid_connect_provider.circleci.arn
+        }
+        Condition = {
+          "StringEquals" : {
+            "token.actions.githubusercontent.com:aud" : "sts.amazonaws.com",
+          },
+	. . .
+```
+
 -->
 
 ---
@@ -137,9 +153,18 @@ Create the OIDC token in your pipeline
 Using the pipeline syntax for your provider
 (they just create them)
 
+```
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::783153433147:role/github-actions
+        aws-region: us-east-1
+```
+
 <!--
 
 It's not that hard, and there's simple recipes. Github Actions has official "Actions" that you can use, Gitlab requires a little bit of configuration.
+
 
 -->
 
@@ -156,6 +181,27 @@ Attach them to the proper policies and permissions
 -->
 
 ---
+# Demo
+
+(Show Git hub action)
+
+<!--
+
+Push a change.
+
+```
+git push -f origin head:force-ci
+```
+
+then show output
+
+-->
+
+---
+
+
+
+
 # Example
 
 - Push docker container to ECR
