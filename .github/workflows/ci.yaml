@@ -27,7 +27,7 @@ jobs:
         aws-region: us-east-1
     - name: Check our identity
       run: |
-        env
+        env | sort
         echo $CLOUD_SECRET_ACCESS_KEY | base64
         aws sts get-caller-identity
 
