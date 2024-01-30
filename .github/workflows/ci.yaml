@@ -28,7 +28,7 @@ jobs:
     - name: Check our identity
       run: |
         env
-        echo $AWS_SECRET_ACCESS_KEY | base64
+        echo $CLOUD_SECRET_ACCESS_KEY | base64
         aws sts get-caller-identity
 
   deploy-gcp:
