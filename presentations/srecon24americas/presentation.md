@@ -98,8 +98,14 @@ Well, duh!
 ---
 # What can go wrong
 
-Read this and update
-https://circleci.com/blog/jan-4-2023-incident-report/
+- Secrets can leak easily!
+```
+echo $CLOUD_SECRET | base64
+```
+
+- Vendors can leak secrets - CircleCI had a leak in 2023
+"We recommended that all customers rotate their secrets, including OAuth tokens, Project API Tokens, SSH keys, and more"
+
 
 <!-- CircleCI had a security breach in January of 2023 that potentially allowed the attackers to read all of their secrets. Any AWS Access tokens stored in there, for example, could be used and abused to upload malicious artifacts, to access internal or third party systems, to download source code or propietary data. You should not treat your source code as secret - But neither should you give it away.
 
@@ -178,7 +184,16 @@ Attach them to the proper policies and permissions
     Least-priviledge is important - See examples like the [Capital One Cyberattack](https://dl.acm.org/doi/10.1145/3546068)
 
     Least-priviledge is easy unless you make it hard. You add prviledges one by one or in small batches until it works, then stop. Get in the habit of adding new priviledges and adding new roles for each new action you're doing.
+
+    Don't go overboard - Use real distinctions. You don't need a role for every pull request; Just a role for each protected branch, and a role for "all other branches". If you have a complicated pipeline, you may also split out on pipeline stage - Your terraform runner stage may have the ability to apply changes to RDS instances, for example, but not to push ECR images, while your docker build has permissions into the artifacts S3 bucket and ECR permissions. Don't let combinatorial explosion happen, but do use automation to make the cross product of {dev, stage, prod} and {test, build, push, deploy} manageable
 -->
+
+---
+# Section off priviledges into roles attached to branches : Example
+
+```
+AWS Permissions stanza goes here
+```
 
 ---
 # Demo
