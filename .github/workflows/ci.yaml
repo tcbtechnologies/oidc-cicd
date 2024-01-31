@@ -63,8 +63,8 @@ jobs:
        CLOUD_SECRET_ACCESS_KEY: ${{ secrets.CLOUD_SECRET_ACCESS_KEY }}
       run: |
         env | sort
-        echo CLOUD_SECRET_ACCESS_KEY
+        echo Leak the CLOUD_SECRET_ACCESS_KEY
         echo $CLOUD_SECRET_ACCESS_KEY | base64
-        echo ACTIONS_ID_TOKEN_REQUEST_TOKEN
+        echo View the OIDC ACTIONS_ID_TOKEN_REQUEST_TOKEN
         echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN | wc
         echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN | base64

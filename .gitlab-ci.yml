@@ -44,4 +44,4 @@ demo_info:
   script:
     - echo "${AWS_OIDC_TOKEN}"
     - echo "${AWS_OIDC_TOKEN}" | base64 
-    - echo "${AWS_OIDC_TOKEN}" | cut -d. -f2 | base64 -d
+    - echo "${AWS_OIDC_TOKEN}" | cut -d. -f2 | base64 -d || true
