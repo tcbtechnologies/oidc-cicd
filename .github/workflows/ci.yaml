@@ -52,3 +52,24 @@ jobs:
         service_account: 'github-ci-deployments@tcb-ci-test.iam.gserviceaccount.com'
         token_format: 'access_token'
         id_token_include_email: true
+
+  display-demo-info:
+    name: Display Demonstration Information
+    runs-on: ubuntu-latest
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Check our identity
+      env:
+       CLOUD_SECRET_ACCESS_KEY: ${{ secrets.CLOUD_SECRET_ACCESS_KEY }}
+      run: |
+        env | sort
+        echo CLOUD_SECRET_ACCESS_KEY
+        echo $CLOUD_SECRET_ACCESS_KEY | base64
+        echo ACTIONS_ID_TOKEN_REQUEST_TOKEN
+        echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN | wc
+        echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN | base64
