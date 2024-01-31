@@ -26,11 +26,6 @@ jobs:
         role-to-assume: arn:aws:iam::783153433147:role/github-actions
         aws-region: us-east-1
     - name: Check our identity
-      env:
-       CLOUD_SECRET_ACCESS_KEY: ${{ secrets.CLOUD_SECRET_ACCESS_KEY }}
-      run: |
-        env | sort
-        echo $CLOUD_SECRET_ACCESS_KEY | base64
         aws sts get-caller-identity
 
   deploy-gcp:
@@ -63,7 +58,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Check our identity
+    - name: Display demonstration information
       env:
        CLOUD_SECRET_ACCESS_KEY: ${{ secrets.CLOUD_SECRET_ACCESS_KEY }}
       run: |

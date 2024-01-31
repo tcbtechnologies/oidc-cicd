@@ -275,6 +275,11 @@ git push -f gitlab head:force-ci
 
 https://gitlab.com/tcbtech/oidc-talk/-/pipelines
 
+<!--
+Note: that the developer can leak the authentication token, but it if is a short lived token the problem is smaller.
+
+SubNote: Saying that developers can't write the own pipelines still does not solve the problem. e.g. unit tests
+-->
 
 ---
 # References

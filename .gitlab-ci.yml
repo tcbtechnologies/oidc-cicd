@@ -6,20 +6,21 @@ variables:
   # Deployment jobs running only on master should use role/service/gitlab-ci-master
   AWS_ROLE_ARN: arn:aws:iam::783153433147:role/gitlab
 
+# depending on your approach you create the token for 
+# all jobs in the pipeline by using the before clause
 default:
   id_tokens:
     AWS_OIDC_TOKEN:
       aud: sts.amazonaws.com
-  before_script:
-    - echo "${AWS_OIDC_TOKEN}" > $AWS_WEB_IDENTITY_TOKEN_FILE
+#  before_script:
+#    - echo "${AWS_OIDC_TOKEN}" > $AWS_WEB_IDENTITY_TOKEN_FILE
 
 test_aws:
   image:
     name: amazon/aws-cli
     entrypoint: [""]
   script:
-    - echo "${AWS_OIDC_TOKEN}"
-    - echo "${AWS_OIDC_TOKEN}" | base64
+    - echo "${AWS_OIDC_TOKEN}" > $AWS_WEB_IDENTITY_TOKEN_FILE
     - aws sts get-caller-identity
 
 test_gcp:
@@ -35,3 +36,12 @@ test_gcp:
   script:
     - echo "${GCP_OIDC_TOKEN}" > $GCP_TOKEN_FILE
     - ./test_gcp_account.sh
+
+demo_info:
+  image:
+    name: amazon/aws-cli
+    entrypoint: [""]
+  script:
+    - echo "${AWS_OIDC_TOKEN}"
+    - echo "${AWS_OIDC_TOKEN}" | base64 
+    - echo "${AWS_OIDC_TOKEN}" | cut -d. -f2 | base64 -d
