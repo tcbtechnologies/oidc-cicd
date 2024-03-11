@@ -118,12 +118,20 @@ We use OIDC only incidentally - It is presently the one and only common way that
 -->
 
 ---
-# Why long lived credentails are insecure
+# Straw Poll: How many of your credentials look like this?
 
-Well, duh!
-- No rotation
-- Coarse grained access
-- Poor attribution to the user initiating an action
+<div class="columns">
+<div>
+<img alt="A dozen long-lived credentials" src="images/bad_example.png">
+</div>
+<div>
+
+Long lived credentials like this are obviously insecure
+<ul>
+<li>No rotation</li>
+<li>Coarse grained access</li>
+<li>Poor attribution</li>
+</div>
 
 <!-- 
 -- Mark --
