@@ -200,9 +200,10 @@ See our example repository for the precise, working invocations.
       {
         Action = "sts:AssumeRoleWithWebIdentity"
         Effect = "Allow"
+        #  Or Gitlab, or CircleCI, or...
         Sid    = "Github"
         Principal = {
-          Federated = aws_iam_openid_connect_provider.circleci.arn
+          Federated = aws_iam_openid_connect_provider.github.arn
         }
         Condition = {
           "StringEquals" : {
@@ -212,6 +213,9 @@ See our example repository for the precise, working invocations.
 ```
 <!--
 -- Ted --
+
+I want you to read this fully, because this is pretty straightforward. We want to allow you to connect via OIDC (that's what AssumeRoleWithWebIdentity means, not "From other AWS User" or "From SAML"
+It's a simple condition and remote principal
 
 -->
 ---
