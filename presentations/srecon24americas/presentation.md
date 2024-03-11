@@ -33,43 +33,6 @@ style: |
   */
 
 ---
-
-# OIDC and CICD: Why Your CI Pipeline Is Your Greatest Security Threat
-
-<div class="titlecolumns">
-<div>
-
-<!-- https://www.usenix.org/conference/srecon24americas/presentation/hahn -->
-
-![Ted Hahn](https://www.tcbtech.com/wp-content/uploads/2020/11/ted.jpg) Ted Hahn, ![TCB Logo](images/TCB_Logo_Full.png)
-thahn@tcbtech.com
-
-<!-- Ted Hahn is an SRE for hire working on planet-scale distributed systems. His clients include Epic Games and startups in Seattle and New York. -->
-
-![Mark Hahn](https://www.tcbtech.com/wp-content/uploads/2020/11/mark.jpg) Mark Hahn, ![Qualys Logo](images/Qualys_Logo_Full.png)
-mhahn@qualys.com
-
-<!-- Mark Hahn is a Security Solutions Architect for Cloud and Containers at Qualys. He works on securing cloud native environments for the most demanding customers worldwide. -->
-
-</div>
-
-<div>
-
-## [tcbtech.com/oidc-cicd](https://tcbtech.com/oidc-cicd)
-
-</div>
-
-</div>
-
-<!-- Project repo: https://github.com/tcbtechnologies/odic-cicd/ -->
-
-<!-- We are father son team that put this idea and demonstration together. 
-
-We encourage you to open the slides at this URL while we talk
-
--->
-
----
 # OIDC and CICD: Why Your CI Pipeline Is Your Greatest Security Threat
 
 <!-- https://www.usenix.org/conference/srecon24americas/presentation/hahn -->
