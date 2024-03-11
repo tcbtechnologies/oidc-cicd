@@ -149,6 +149,11 @@ echo $CLOUD_SECRET | base64
 
 <!-- 
 -- Ted --
+Secrets leak trivially from the CICD Pipeline. Whatever you're running unit tests as - That's what developers are running as. They can insert a line of code that copies the environment variables to an s3 bucket from their unit tests. They can add a line that base64's and prints the creds from a build shell script. Your CI masks these variables, but it's trivial to defeat - It's there to prevent obvious accidents, not malice.
+
+I'm not saying your *developers* will do this. I'm saying that while I'd love to imagine that all developers are great, security minded people immune to phishing attacks, I know that's not true. Developer credentials will be used to escalate attacks.
+
+--- Mark
 
 CircleCI had a security breach in January of 2023 that potentially allowed the attackers to read all of their secrets. Any AWS Access tokens stored in there, for example, could be used and abused to upload malicious artifacts, to access internal or third party systems, to download source code or propietary data. You should not treat your source code as secret - But neither should you give it away.
 
