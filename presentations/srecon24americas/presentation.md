@@ -26,6 +26,13 @@ style: |
     grid-template-columns: repeat(2, minmax(0px, 1fr));
     gap: .5rem;
   }
+  .presenters {
+	text-align: center;
+  }
+
+  img.presenters {
+	height: 490px;
+  }
 
   /*
   * @theme foobar
@@ -133,10 +140,10 @@ Long lived credentials like this are obviously insecure
 <li>Poor attribution</li>
 </div>
 
-<!-- 
+<!--
 -- Mark --
 
-This speaks for itself. Long lived credentials are likely shared between a bunch of people or a bunch of teams. 
+This speaks for itself. Long lived credentials are likely shared between a bunch of people or a bunch of teams.
 
 They're fine for getting started (because they are easy), but we've shown that security breaches do happen, and it's painful to rotate if you're not in the habit of rotating.
 
@@ -155,7 +162,7 @@ echo $CLOUD_SECRET | base64
 
 - Vendors can get hacked via CICD - CloudFlare Thanksgiving Day 2023 Incident
 
-<!-- 
+<!--
 -- Ted --
 Secrets leak trivially from the CICD Pipeline. Whatever you're running unit tests as - That's what developers are running as. They can insert a line of code that copies the environment variables to an s3 bucket from their unit tests. They can add a line that base64's and prints the creds from a build shell script. Your CI masks these variables, but it's trivial to defeat - It's there to prevent obvious accidents, not malice.
 
