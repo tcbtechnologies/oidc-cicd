@@ -15,7 +15,7 @@ for rendering output. See:
 
 # Operation
 
-For realtime updated use marp in server mode:
+For realtime updated use marp in server
 ```
 npx @marp-team/marp-cli -s . 
 ```
