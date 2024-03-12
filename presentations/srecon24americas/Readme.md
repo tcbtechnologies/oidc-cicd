@@ -17,7 +17,7 @@ for rendering output. See:
 
 For realtime updated use marp in server
 ```
-npx @marp-team/marp-cli -s . 
+npx @marp-team/marp-cli --html -s . 
 ```
 
 When complete use in batch mode (vai makefile) to create
