@@ -465,27 +465,23 @@ This second example shows how you'd do this for a s3 push action
 -->
 
 ---
-# Demo - GitHub
+# Demo
+Show of hands, how many people use [Gitlab](https://gitlab.com/tcbtech/oidc-talk/-/pipelines) vs [Github](https://github.com/tcbtechnologies/oidc-cicd/actions)?
 
-(Show GitHub action jobs for AWS and GCP)
+### GitHub action jobs for AWS and GCP
 
 ```
 git commit --allow-empty -m "Demo."
 git push -f origin head:force-ci
 ```
 
-https://github.com/tcbtechnologies/oidc-cicd/actions
 
----
-# Demo - GitLab
-
-(Show GitLab action jobs for AWS and GCP)
+### GitLab action jobs for AWS and GCP
 
 ```
 git push -f gitlab head:force-ci
 ```
 
-https://gitlab.com/tcbtech/oidc-talk/-/pipelines
 
 <!--
 Note: that the developer can leak the authentication token, but it if is a short lived token the problem is smaller.
