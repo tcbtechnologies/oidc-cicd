@@ -11,9 +11,6 @@ style: |
   img[alt="Mark Hahn"] { height: 100px; }
   img[alt="TCB Logo"] { height: 66px; }
   img[alt="Qualys Logo"] { height: 66px; }
-  img[alt="Session Feedback"] { height: 150px; }
-  img[alt="Certificate Authorities"] { height: 470px; }
-  img[alt="Limiting Trust Scope"] { height: 425px; }
   img { height: 490px; }
   .columns {
     display: grid;
@@ -26,6 +23,13 @@ style: |
     grid-template-columns: repeat(2, minmax(0px, 1fr));
     gap: .5rem;
   }
+  .presenters {
+	text-align: center;
+  }
+
+  img.presenters {
+	height: 490px; 
+  }
 
   /*
   * @theme foobar
@@ -37,7 +41,7 @@ style: |
 # OIDC and CICD: Why Your CI Pipeline Is Your Greatest Security Threat
 
 <div class="titlecolumns">
-<div>
+<div class="presenters">
 
 <!-- https://www.usenix.org/conference/srecon24americas/presentation/hahn -->
 
@@ -52,8 +56,9 @@ mhahn@qualys.com
 <!-- Mark Hahn is a Security Solutions Architect for Cloud and Containers at Qualys. He works on securing cloud native environments for the most demanding customers worldwide. -->
 
 </div>
-
 <div>
+
+<br><br>
 
 ## [tcbtech.com/oidc-cicd](https://tcbtech.com/oidc-cicd)
 
