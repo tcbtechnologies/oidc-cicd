@@ -460,8 +460,7 @@ Policy:
 <!--
 
 -- Ted --
-Here is an example of two roles the get connected
-to different branches by using 
+This second example shows how you'd do this for a s3 push action
 
 -->
 
