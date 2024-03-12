@@ -482,6 +482,12 @@ git push -f origin head:force-ci
 git push -f gitlab head:force-ci
 ```
 
+---
+# Takeaways
+
+- Prevent Developers from abusing CI's access by tying roles to protected branches
+- Understand that Unit Tests in CI run as CI - And Developers run as that CI, too
+- Splitting roles by pipeline makes it simple - Simple is good
 
 <!--
 Note: that the developer can leak the authentication token, but it if is a short lived token the problem is smaller.
