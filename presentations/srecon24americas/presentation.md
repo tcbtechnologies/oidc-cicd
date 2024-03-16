@@ -517,7 +517,13 @@ SubNote: Saying that developers can't write the own pipelines still does not sol
 
 </div>
 <div>
-stuff
+
+<br>
+<br>
+<br>
+
+## Thank you!
+### [tcbtech.com/oidc-cicd](https://tcbtech.com/oidc-cicd)
 
 </div>
 
