@@ -191,7 +191,7 @@ We were unable to find any public reports of secondary breaches from this, but t
 
 - Developer Branches are untrusted code
 - Your CI configuration lives in the repo itself now
-- There are no guaranees here
+- There are no guarantees here
 
 <!-- -- Ted --
 
