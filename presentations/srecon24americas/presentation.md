@@ -187,6 +187,22 @@ We were unable to find any public reports of secondary breaches from this, but t
 -->
 
 ---
+CD - Confused Deputy
+
+- Developer Branches are untrusted code
+- Your CI configuration lives in the repo itself now
+- There are no guaranees here
+
+<!-- -- Ted --
+
+The point of running unit tests on unreviewed code is that they're unreviewed. These are low effort.
+Early CI systems were configured outside of the repo itself. This allowed you to make security decisions at this layer - Your CI system could enforce which stages ran on which machines and with what permissions. Now that the configuration is stored in-repo, changing the role is one line of code that can be in any PR.
+
+What modern CI systems still provide is information about action triggers. These are your source of truth, and these are what your other systems - Your cloud providers - Can use for their AuthZ decisions
+
+-->
+
+---
 # How to use OIDC
 
 Three Simple Steps:
@@ -196,7 +212,7 @@ Three Simple Steps:
 
 <!-- --- Mark --
 
-These steps are simple, but take some trial and error. 
+These steps are simple, but take some trial and error.
 
 Testing via shell may help.
 
