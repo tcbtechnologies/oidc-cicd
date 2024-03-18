@@ -491,7 +491,7 @@ git push -f gitlab head:force-ci
 - Understand that Unit Tests in CI run as CI - And Developers run as that CI, too
 - Splitting roles by pipeline makes it simple - Simple is good
 
-<!--
+<!-- -- Mark --
 Note: that the developer can leak the authentication token, but it if is a short lived token the problem is smaller.
 
 SubNote: Saying that developers can't write the own pipelines still does not solve the problem. e.g. unit tests
