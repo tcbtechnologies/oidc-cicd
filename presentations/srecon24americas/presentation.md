@@ -78,7 +78,6 @@ We encourage you to open the slides at this URL while we talk
 </style>
 # Configuring your CI correctly is vital
 
-### Outline:
 - History of credentials
   - Why using long lived tokens is insecure
   - Examples of what can go wrong
