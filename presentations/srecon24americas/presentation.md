@@ -56,9 +56,9 @@ Mark Hahn is a Security Solutions Architect for Cloud and Containers at Qualys. 
 <br>
 
 ### [tcbtech.com/oidc-cicd](https://tcbtech.com/oidc-cicd)
-`https://github.com/tcbtechnologies/oidc-cicd`
+[github/tcbtechnologies/oidc-cicd](https://github.com/tcbtechnologies/oidc-cicd)
 
-`https://gitlab.com/tcbtech/oidc-talk/`
+[gitlab.com/tcbtech/oidc-talk/](https://gitlab.com/tcbtech/oidc-talk/)
 
 <div>
 <!-- Project repo: https://github.com/tcbtechnologies/odic-cicd/ -->
