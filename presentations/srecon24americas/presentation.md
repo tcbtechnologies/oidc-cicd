@@ -54,10 +54,12 @@ Mark Hahn is a Security Solutions Architect for Cloud and Containers at Qualys. 
 <div>
 
 <br>
-<br>
-<br>
 
 ### [tcbtech.com/oidc-cicd](https://tcbtech.com/oidc-cicd)
+`https://github.com/tcbtechnologies/oidc-cicd`
+
+`https://gitlab.com/tcbtech/oidc-talk/`
+
 <div>
 <!-- Project repo: https://github.com/tcbtechnologies/odic-cicd/ -->
 
@@ -76,8 +78,8 @@ We encourage you to open the slides at this URL while we talk
 </style>
 # Configuring your CI correctly is vital
 
-- Outline:
-  - History of credentials
+### Outline:
+- History of credentials
   - Why using long lived tokens is insecure
   - Examples of what can go wrong
 - How to use OIDC
@@ -190,7 +192,7 @@ Three Simple Steps:
 -  Setup pipelines to use OIDC
 -  Section off privileges into roles attached to branches
 
-<!- --- Mark --
+<!-- --- Mark --
 
 These steps are simple, but take some trial and error. 
 
@@ -519,8 +521,11 @@ SubNote: Saying that developers can't write the own pipelines still does not sol
 <div>
 
 <br>
-<br>
-<br>
+
+### [tcbtech.com/oidc-cicd](https://tcbtech.com/oidc-cicd)
+`https://github.com/tcbtechnologies/oidc-cicd`
+
+`https://gitlab.com/tcbtech/oidc-talk/`
 
 ## Thank you!
 ### [tcbtech.com/oidc-cicd](https://tcbtech.com/oidc-cicd)
