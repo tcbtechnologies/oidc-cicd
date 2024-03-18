@@ -187,7 +187,7 @@ We were unable to find any public reports of secondary breaches from this, but t
 -->
 
 ---
-CD - Confused Deputy
+# CD - Confused Deputy
 
 - Developer Branches are untrusted code
 - Your CI configuration lives in the repo itself now
