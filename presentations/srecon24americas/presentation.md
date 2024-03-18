@@ -234,7 +234,7 @@ See our example repository for the precise, working invocations.
 ```
 <!-- -- Ted --
 
-I want you to read this fully, because this is pretty straightforward. We want to allow you to connect via OIDC (that's what AssumeRoleWithWebIdentity means, not "From other AWS User" or "From SAML"
+I want you to read this trust policy fully, because this is pretty straightforward. We want to allow you to connect via OIDC (that's what AssumeRoleWithWebIdentity means, not "From other AWS User" or "From SAML"
 It's a simple condition and remote principal
 
 -->
