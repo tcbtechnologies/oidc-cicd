@@ -71,6 +71,14 @@ We encourage you to open the slides at this URL while we talk
 -->
 
 ---
+# Every System Has Two Architectures
+
+- The Application Architecture
+- The Build and Deployment (CI) Architecture
+
+Both architectures are critical to your appliation success.
+
+---
 <style scoped>
 {
   font-size: 150%;
