@@ -1,4 +1,4 @@
-# Presenation for SRECon24
+# Presentation for SRECon24
 
 https://www.usenix.org/conference/srecon24americas/program
 https://www.usenix.org/conference/srecon24americas/presentation/hahn
