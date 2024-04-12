@@ -561,13 +561,13 @@ SubNote: Saying that developers can't write the own pipelines still does not sol
 
 <br>
 
-### [tcbtech.com/oidc-cicd](https://tcbtech.com/oidc-cicd)
+### [tcbtech.com/bsides24](https://tcbtech.com/bsides24)
 `https://github.com/tcbtechnologies/oidc-cicd`
 
 `https://gitlab.com/tcbtech/oidc-talk/`
 
 ## Thank you!
-### [tcbtech.com/oidc-cicd](https://tcbtech.com/oidc-cicd)
+### [tcbtech.com/bsides24](https://tcbtech.com/bsides24)
 
 </div>
 
