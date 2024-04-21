@@ -37,19 +37,25 @@ style: |
 <div class="titlecolumns">
 <div>
 
-<!-- https://www.usenix.org/conference/srecon24americas/presentation/hahn -->
-
 ![Ted Hahn](https://www.tcbtech.com/wp-content/uploads/2020/11/ted.jpg) Ted Hahn, ![TCB Logo](images/TCB_Logo_Full.png)
 thahn@tcbtech.com
 
 <!-- -- Ted --
-Ted Hahn is an SRE for hire working on planet-scale distributed systems. His clients include Epic Games and startups in Seattle and New York. -->
+Go to tcbtech.com/bsides24 to download the slides and follow along with the presentation.
+
+Hello I am Ted Hahn. I am an SRE that does platform engineering for planet-scale distributed systems.
+I help startups and small business to create infrastructure and build systems that scale their needs.
+I am available to help your business or team.
+-->
 
 ![Mark Hahn](https://www.tcbtech.com/wp-content/uploads/2020/11/mark.jpg) Mark Hahn, ![Qualys Logo](images/Qualys_Logo_Full.png)
 mhahn@qualys.com
 
 <!-- -- Mark --
-Mark Hahn is a Security Solutions Architect for Cloud and Containers at Qualys. He works on securing cloud native environments for the most demanding customers worldwide. -->
+I am Mark Hahn. I am a Security Solutions Architect for Cloud and Containers at Qualys. 
+I work on securing cloud native environments for the most demanding customers worldwide. 
+-->
+
 </div>
 <div>
 
@@ -69,6 +75,12 @@ We are father son team that put this idea and demonstration together.
 We encourage you to open the slides at this URL while we talk
 
 -->
+
+<!-- -- Presented at: --
+ - https://www.usenix.org/conference/srecon24americas/presentation/hahn 
+ - https://www.bsidesseattle.com/2024-schedule.html 
+-->
+
 
 ---
 # Every System Has Two Architectures
@@ -174,7 +186,9 @@ This speaks for itself. Long lived credentials are likely shared between a bunch
 
 They often are overprovisioned for the job that they need to do. This is often because the target systems don't support finer grain access.
 
-They're fine for getting started because they are easy, but we've shown that security breaches do happen, and it's painful to rotate if you're not in the habit of rotating.
+They are fine for getting started because they are easy, but we've shown that security breaches do happen, and it's painful to rotate if you're not in the habit of rotating.
+
+They are great, until something goes wrong.
 
 -->
 
@@ -191,11 +205,16 @@ echo $CLOUD_SECRET | base64
 
 - Vendors can get hacked via CICD - CloudFlare Thanksgiving Day 2023 Incident
 
+- liblzma/xzutils - Jia Tan
+
 <!-- -- Ted --
 
-Secrets leak trivially from the CICD Pipeline. Whatever you're running unit tests as - That's what developers are running as. They can insert a line of code that copies the environment variables to an s3 bucket from their unit tests. They can add a line that base64's and prints the creds from a build shell script. Your CI masks these variables, but it's trivial to defeat - It's there to prevent obvious accidents, not malice.
+Secrets leak trivially from the CICD Pipeline. Whatever you're running unit tests as - That's what developers are running as. 
 
-I once said this wasn't something your developers were likely to do. Jia Tan or the group going by that moniker are making us all reconsider that likelyhood. Developer credentials will be used to escalate attacks.
+They can insert a line of code that copies the environment variables to an s3 bucket from their unit tests. They can add a line that base64's and prints the creds from a build shell script. Your CI masks these variables, but it's trivial to defeat - It's there to prevent obvious accidents, not malice.
+
+I will elaborate on the next slide.
+
 -->
 <!-- -- Mark --
 
@@ -203,8 +222,7 @@ CircleCI had a security breach in January of 2023 that potentially allowed the a
 
 For many CircleCI Customers, these secrets were "set and forget"; Most customers did not know how these credentials were created in the first place, and so didn't know how to re-create them for rotation, nor how to disable the old ones. In many cases, the access was overprovisioned - Giving these CI Secrets access to S3 buckets not just containing build artifacts or public websites, but also acess to business internal data or internal services.
 
-We were unable to find any public reports of secondary breaches from this, but the potential implications were high.
-
+We can't protect you from insider attacks but can make them more obvious and make it easier to recover and know that the attack has been fully mitigated.
 -->
 
 ---
@@ -216,10 +234,13 @@ We were unable to find any public reports of secondary breaches from this, but t
 
 <!-- -- Ted --
 
-The point of running unit tests on unreviewed code is that they're unreviewed. These are low effort.
+The point of running unit tests on unreviewed code is that they're unreviewed. These are low effort. They are aribtrary code and can include any code to do anything, both useful and malicious.
+
 Early CI systems were configured outside of the repo itself. This allowed you to make security decisions at this layer - Your CI system could enforce which stages ran on which machines and with what permissions. Now that the configuration is stored in-repo, changing the role is one line of code that can be in any PR.
 
-What modern CI systems still provide is information about action triggers. These are your source of truth, and these are what your other systems - Your cloud providers - Can use for their AuthZ decisions
+Modern CI systems give information about which branch triggered the change as part of the OIDC credentails and that can be use to make AuthZ decisions. This allows you to limit permissions in a way that provides for least priviledge.
+
+There are no guarentees here.
 
 -->
 
@@ -245,7 +266,7 @@ Setup the policies/permissions that to the least privileges necessary
 
 <!-- -- Ted --
 
-    This is the hard part, not because it's hard, but because it's fiddly and you will bang your head against it. Pay careful attention to the claims (you can inspect the JWT that Gitlab or Github generates). The saudience and subject need to match precisely; Capitalization matters.
+    This is the hard part, not because it's hard, but because it's fiddly and you will bang your head against it. Pay careful attention to the claims (you can inspect the JWT that Gitlab or Github generates). The audience and subject need to match precisely; Capitalization matters.
 
 See our example repository for the precise, working invocations.
 
@@ -305,9 +326,9 @@ https://docs.gitlab.com/ee/ci/secrets/id_token_authentication.html
 
 ```
 {
-  "aud": "sts.amazonaws.com"
-  "sub": "project_path:tcbtech/oidc-talk:ref_type:branch:ref:mark",
   "iss": "https://gitlab.com",
+  "aud": "sts.amazonaws.com",
+  "sub": "project_path:tcbtech/oidc-talk:ref_type:branch:ref:mark",
   "iat": 1705018870,
   "nbf": 1705018865,
   "exp": 1705022470,
@@ -428,6 +449,8 @@ Policy:
 <!-- -- Ted --
 Here is an example of two roles the get connected
 to different branches by using 
+
+Left is production on the master branch and the right is for pre-prod branches.
 
 -->
 
@@ -568,6 +591,12 @@ SubNote: Saying that developers can't write the own pipelines still does not sol
 
 ## Thank you!
 ### [tcbtech.com/bsides24](https://tcbtech.com/bsides24)
+
+<!-- -- Ted, Mark --
+
+Come get a button.
+
+-->
 
 </div>
 
