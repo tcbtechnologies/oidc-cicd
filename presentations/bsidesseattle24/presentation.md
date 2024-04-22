@@ -4,9 +4,13 @@ title: OIDC Everywhere, or at least in CICD
 theme: gaia
 style: |
   section {
-    color: #000;
-    background-color: #ccc;
+    color: #fff;
+    background-color: #000;
+    background-image:url(images/bsidessea-sm.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom 50px right 50px;
   }
+
   img[alt="Ted Hahn"] { height: 100px; }
   img[alt="Mark Hahn"] { height: 100px; }
   img[alt="TCB Logo"] { height: 66px; }
@@ -573,9 +577,11 @@ SubNote: Saying that developers can't write the own pipelines still does not sol
 - https://docs.gitlab.com/ee/ci/cloud_services/aws/index.html
 - https://docs.gitlab.com/ee/ci/cloud_services/google_cloud/
 
+## https://tcbtech.com/bsides24
 ---
 <div class="columns">
 <div>
+<br>
 
 ![My CICD Loves OIDC](images/CICD_Heart_OIDC.png)
 
