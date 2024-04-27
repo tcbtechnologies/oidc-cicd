@@ -92,7 +92,7 @@ We encourage you to open the slides at this URL while we talk
 - The Application Architecture
 - The Build and Deployment (CI) Architecture
 
-Both architectures are critical to your appliation success.
+Both architectures are critical to your application success.
 <!-- -- Mark --
 
 The point is that the CD/CD architecture is as important to the
@@ -167,7 +167,7 @@ We use OIDC only incidentally - It is presently the one and only common way that
 -->
 
 ---
-# Straw Poll: How many of your credentials look like this?
+# Straw Poll: Have you seen CI secrets that look like this?
 
 <div class="columns">
 <div>
@@ -242,9 +242,9 @@ The point of running unit tests on unreviewed code is that they're unreviewed. T
 
 Early CI systems were configured outside of the repo itself. This allowed you to make security decisions at this layer - Your CI system could enforce which stages ran on which machines and with what permissions. Now that the configuration is stored in-repo, changing the role is one line of code that can be in any PR.
 
-Modern CI systems give information about which branch triggered the change as part of the OIDC credentails and that can be use to make AuthZ decisions. This allows you to limit permissions in a way that provides for least priviledge.
+Modern CI systems give information about which branch triggered the change as part of the OIDC credentials and that can be use to make AuthZ decisions. This allows you to limit permissions in a way that provides for least priviledge.
 
-There are no guarentees here.
+This is important to think about when threat modeling: There are no guarentees here.
 
 -->
 
@@ -341,12 +341,17 @@ https://docs.gitlab.com/ee/ci/secrets/id_token_authentication.html
   "namespace_path": "tcbtech",
   "project_id": "53428581",
   "project_path": "tcbtech/oidc-talk",
-   . . . 
+   . . .
+  "user_login":"markphahn",
+  "user_email":"mhahn@tcbtech.com",
 ```
 
 <!-- -- Ted --
-Scope, Iss, sub, etc.
-Not before, expiration, and all the stuff that is needed for strong validation . . . 
+Scope, Iss, sub, etc. - The standard stuff
+Not before, expiration, and all the stuff that is needed for strong validation . . .
+
+Issuer claims (specific to Gitlab) - The project path, the triggering user, etc
+https://docs.gitlab.com/ee/integration/openid_connect_provider.html
 -->
 
 ---
