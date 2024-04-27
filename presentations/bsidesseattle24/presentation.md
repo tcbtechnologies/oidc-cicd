@@ -52,7 +52,7 @@ I help startups and small business to create infrastructure and build systems th
 I am available to help your business or team.
 -->
 
-![Mark Hahn](https://www.tcbtech.com/wp-content/uploads/2020/11/mark.jpg) Mark Hahn, ![Qualys Logo](images/Qualys_Logo_Full.png)
+![Mark Hahn](https://www.tcbtech.com/wp-content/uploads/2020/11/mark.jpg) Mark Hahn, ![Qualys Logo](images/Qualys_Logo_Full_White.png)
 mhahn@qualys.com
 
 <!-- -- Mark --
