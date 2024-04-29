@@ -3,11 +3,6 @@ resource "google_service_account" "deployment" {
   display_name = "CI Deployments"
 }
 
-locals {
-  # These are, annoyingly, case-sensitive, and Github can include uppercase characters. You can be sure you've got the correct capitalization by clicking on the repo name in the top right corner, which will bring you to the repository as Github stores it's name.
-  repos = ["tcbtech/oidc-talk"]
-}
-
 resource "google_service_account_iam_binding" "deployment" {
   service_account_id = google_service_account.deployment.name
   role               = "roles/iam.workloadIdentityUser"
